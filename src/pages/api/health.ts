@@ -4,12 +4,10 @@ import { R2ImageStorage } from '../../lib/storage/r2';
 
 export async function GET() {
   try {
-    // Test D1
     const db = new D1ProductRepository(env.DB);
     const products = await db.getAll();
 
-    // Test R2
-    const storage = new R2ImageStorage(env.IMAGES);
+    const storage = new R2ImageStorage(env.IMAGES_BUCKET);
     const r2Objects = await storage.listObjects();
 
     return new Response(

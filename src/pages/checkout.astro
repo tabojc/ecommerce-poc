@@ -1,0 +1,80 @@
+---
+import { getCart } from '../lib/cart';
+import Layout from '../components/Layout.astro';
+
+const cart = getCart();
+const total = cart.length > 0 ? 1999 : 0;
+
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+}).format(total / 100);
+---
+
+<div class="container mx-auto px-4 py-8">
+  <Layout>
+    <div class="bg-white">
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-brand-600">Checkout</h1>
+        <div class="space-x-4">
+          <a href="/" class="text-gray-500 hover:text-gray-700">Inicio</a>
+          <a href="/shop" class="text-gray-500 hover:text-brand-600 font-medium">Catálogo</a>
+          <a href="/cart" class="text-gray-500 hover:text-brand-600 font-medium">Carrito (<span class="text-red-600" x-text="cart.length"></span>)</a>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200 pt-8">
+        <h2 class="text-xl font-bold mb-4">Información de Pago</h2>
+        <div class="space-y-4">
+          <div class="flex items-center mb-4">
+            <span class="text-gray-700">Tarjeta de crédito</span>
+            <span class="ml-4 text-gray-500">**** **** **** 1234</span>
+          </div>
+          <div class="flex items-center mb-4">
+            <span class="text-gray-700">Fecha de expiración</span>
+            <span class="ml-4 text-gray-500">08/26</span>
+          </div>
+          <div class="flex items-center mb-4">
+            <span class="text-gray-700">CVC</span>
+            <span class="ml-4 text-gray-500">123</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-center">
+            <span class="text-gray-700">Método de envío</span>
+            <span class="ml-4 text-gray-500">Envío estándar (gratis)</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-gray-700">Impuestos</span>
+            <span class="ml-4 text-gray-500">Incluidos en el total</span>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="text-lg font-bold mb-2">Resumen de Ped</h3>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-700">Products</p>
+              <p class="text-gray-500">1 producto</p>
+            </div>
+            <div class="text-gray-500">Total</div>
+            <div class="text-gray-500 font-bold text-brand-600">${formattedPrice}</div>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <button
+            class="w-full bg-brand-600 text-white py-3 rounded hover:bg-brand-700 transition-colors"
+            on:click={() => {
+              alert('¡Pago procesado! Tu orden ha sido creada.')
+            }}
+          >
+            Completar Compra
+          </button>
+        </div>
+      </div>
+    </div>
+  </Layout>
+</div>

@@ -1,0 +1,47 @@
+---
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+}).format(product.price / 100);
+---
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <Layout>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="relative aspect-square bg-gray-100 overflow-hidden rounded-xl">
+        <img 
+          src={product.image_url || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" fill="none"><rect width="300" height="300" fill="%23e5e7eb"/><text x="50%" y="50%" font-family="sans-serif" font-size="16" fill="%239ca3af" dominant-baseline="middle" text-anchor="middle">Sin imagen</text></svg>'} 
+          alt={product.name} 
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="space-y-6">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">{product.name}</h1>
+          <p class="text-gray-600">{product.description || ''}</p>
+          <p class="text-sm text-gray-400 uppercase tracking-wider">{product.category || 'Sin categoría'}</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-xl font-bold text-brand-600">{formattedPrice}</span>
+          {product.stock > 0 ? (
+            <button 
+              type="button"
+              class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              data-add-to-cart={product.id}
+            >
+              Agregar al carrito
+            </button>
+          ) : (
+            <button disabled class="bg-gray-200 text-gray-500 px-6 py-3 rounded-lg font-medium cursor-not-allowed">
+              Sin stock
+            </button>
+          )}
+        </div>
+        <a href="/cart" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-medium transition-colors">
+          Ver carrito
+        </a>
+      </div>
+    </div>
+  </Layout>
+</div>
