@@ -21,6 +21,12 @@ Demostrar una arquitectura limpia y desacoplada para un e-commerce que:
 - Es testable (inyección de mocks en tests unitarios)
 - Tiene control de errores robusto en producción (sin leaks de stack trace al usuario)
 
+## Documentación
+
+- [Patrón Repositorio](docs/repository-pattern.md)
+- [Precios & Monetización](docs/pricing.md)
+- [Plan de Ingresos Conjunto (con Jesús David)](docs/revenue-plan.md)
+
 ## Estructura del Proyecto
 
 ```
@@ -36,14 +42,23 @@ src/
 ├── pages/
 │   ├── api/
 │   │   └── health.ts       → Health check (D1 + R2)
+│   │   └── products/index.ts  → Listado de productos
 │   └── index.astro
-└── components/             → Web Components (product-card, cart-drawer, etc.)
+├── components/             → Web Components (product-card, layout)
+│   ├── ProductCard.astro
+│   ├── Layout.astro
+│   └── CartDrawer.ts
+├── pages/
+│   ├── shop.astro          → Página catálogo
+│   ├── product.astro     → Página detalle producto
+│   ├── checkout.astro    → Página checkout
+│   └── cart.astro        → Página carrito (next step)
 ```
 
 ## Funcionalidades Planificadas
 
 - [x] Health check endpoint (`/api/health`)
-- [ ] Listado de productos (`GET /api/products`)
+- [x] Listado de productos (`GET /api/products`)
 - [ ] Detalle de producto (`GET /api/products/:id`)
 - [ ] Carrito client-side (localStorage + Nano Stores)
 - [ ] Checkout endpoint (`POST /api/checkout`)
@@ -58,17 +73,9 @@ src/
 npm install
 
 # Configurar Cloudflare
-cp .env.example .dev.vars
-# Editar .dev.vars con tus secrets locales
-
-# Crear base de datos D1
-wrangler d1 create ecommerce-poc
-
-# Aplicar migración
-wrangler d1 execute ecommerce-poc --file migrations/001_initial.sql
-
-# Crear bucket R2
+npx wrangler d1 create ecommerce-poc
 wrangler r2 create ecommerce-poc-images
+wrangler d1 execute ecommerce-poc --file migrations/001_initial.sql
 
 # Ejecutar
 npm run dev
@@ -80,6 +87,6 @@ npm run dev
 curl http://localhost:4321/api/health
 ```
 
-## Documentación
+## Acerca de este PoC
 
-- [Patrón Repositorio](docs/repository-pattern.md)
+Este repositorio demuestra una arquitectura completa y profesional para un e-commerce en el tier gratuito de Cloudflare, con patrón repositorio para facilitar cambios futuros y control de errores sin mostrar detalles técnicos al usuario final.
