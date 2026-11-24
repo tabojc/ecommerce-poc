@@ -1,16 +1,36 @@
 ---
----
+import Layout from '../components/Layout.astro';
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+---
+<div class="container mx-auto px-4 py-12 text-center">
+  <Layout>
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-5xl font-bold text-brand-600 mb-6">☁️ CloudStore PoC</h1>
+      <p class="text-xl text-gray-600 mb-8">
+        E-commerce completo en Cloudflare Free Tier ($0/mes)
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/shop" class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+          Ver Catálogo
+        </a>
+        <a href="/checkout" class="border-2 border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+          Ir al Checkout
+        </a>
+      </div>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <h3 class="text-lg font-bold mb-2">☁️ Cloudflare D1</h3>
+          <p class="text-sm text-gray-600">Base de datos SQLite para productos y órdenes</p>
+        </div>
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <h3 class="text-lg font-bold mb-2">☁️ Cloudflare R2</h3>
+          <p class="text-sm text-gray-600">Almacenamiento de imágenes de productos</p>
+        </div>
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <h3 class="text-lg font-bold mb-2">🔋 Astro SSR</h3>
+          <p class="text-sm text-gray-600">Rendering híbrido con @astrojs/cloudflare</p>
+        </div>
+      </div>
+    </div>
+  </Layout>
+</div>
