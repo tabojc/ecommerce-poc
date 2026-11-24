@@ -14,7 +14,7 @@ const cart = getCart();
         <h1 class="text-3xl font-bold text-brand-600">Nuestro Catálogo</h1>
         <div class="space-x-4">
           <a href="/" class="text-gray-500 hover:text-gray-700">Inicio</a>
-          <a href="/cart" class="text-gray-500 hover:text-gray-700">Carrito (<span class="text-red-600 font-bold" x-text="cart.length"></span>)</a>
+          <a href="/cart" class="text-gray-500 hover:text-gray-700">Carrito (<span class="text-red-600 font-bold">{cart.length}</span>)</a>
         </div>
       </div>
       
@@ -25,7 +25,7 @@ const cart = getCart();
       </div>
       
       <div class="mt-8">
-        <h2 class="text-xl font-bold mb-4">Carrito (<span class="text-red-600" x-text="cart.length"></span>)</h2>
+        <h2 class="text-xl font-bold mb-4">Carrito (<span class="text-red-600">{cart.length}</span>)</h2>
         <div class="border-t border-gray-200 pt-4">
           {cart.length === 0 ? (
             <p class="text-gray-500">Tu carrito está vacío</p>
@@ -43,7 +43,7 @@ const cart = getCart();
                 </div>
               ))}
               <div class="mt-4">
-                <p class="text-xl font-bold">Total: ${cart.length} productos</p>
+                <p class="text-xl font-bold">Total: {cart.length} productos</p>
                 <button 
                   class="bg-brand-600 text-white px-6 py-3 rounded hover:bg-brand-700 transition-colors"
                   data-checkout
@@ -58,12 +58,3 @@ const cart = getCart();
     </div>
   </Layout>
 </div>
-
-<script>
-  // Simple cart total calculation
-  function cartTotal() {
-    let total = 0;
-    // TODO: implement actual cart total calculation
-    return Math.round(total);
-  }
-</script>
