@@ -1,5 +1,7 @@
 # build output
 dist/
+# agent internal state
+.atl/
 # generated types
 .astro/
 

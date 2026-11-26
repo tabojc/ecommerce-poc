@@ -39,11 +39,11 @@ Report results as observed (`<command>: <result>`), never as assumed. If a requi
 - **Minimal scope**: Implement only what was explicitly requested; do not expand scope without user confirmation.
 - **Stakeholder-centric**: Every change must serve a clear purpose for demonstrating value to the product owner.
 - **Minimal risk**: Prefer additive, reversible changes; verify each increment with a build before proceeding.
-- **Generic / white-label mindset**: Keep the project adaptable (repository pattern already isolates D1/R2). Avoid hard-coding client-specific coupling when a generic option is reasonable.
+- **Generic / multi-tenant mindset**: Keep the project adaptable (repository pattern already isolates D1/R2). Design for tenant isolation (tenant_id / schemas) before hard-coding client-specific coupling. Avoid hard-coding client-specific coupling when a generic option is reasonable.
 
 ## Checkout Flow — Planned Gates
 
-- **G1 (done)**: Landing "all-in-one" page (hero + demo + white-label benefits).
+- **G1 (done)**: Landing "all-in-one" page (hero + demo + SaaS value pitch).
 - **G2**: `POST /api/checkout` — create order in DB with status `pending`, validate stock, persist cart items.
 - **G3**: Order listing UI + **cancel** action (only when status is `pending`).
 - **G4**: Real payment tracking — store `payment_provider` / `payment_id` and reflect paid vs unpaid.
