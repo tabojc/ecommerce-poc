@@ -28,7 +28,37 @@ import { getCart } from '../lib/cart';
     <slot />
   </main>
   <footer class="bg-gray-100 border-t border-gray-200 mt-12">
-    <div class="container mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+    <div class="container mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <h4 class="font-bold mb-4">Tienda</h4>
+        <div class="space-y-2 text-sm text-gray-600">
+          <a href="/shop" class="hover:text-brand-600">Catálogo</a>
+          <a href="/checkout" class="hover:text-brand-600">Checkout</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Compañía</h4>
+        <div class="space-y-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-brand-600">Inicio</a>
+          <a href="/shop" class="hover:text-brand-600">Menú</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Legal</h4>
+        <div class="space-y-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-brand-600">Privacidad</a>
+          <a href="/" class="hover:text-brand-600">Términos</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Contacto</h4>
+        <div class="space-y-2 text-sm text-gray-600">
+          <a href="mailto:hola@cloudstore.com" class="hover:text-brand-600">hola@cloudstore.com</a>
+          <a href="tel:+123456789" class="hover:text-brand-600">+1 234 567 890</a>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto px-4 py-6 text-center text-gray-500 text-sm border-t border-gray-200">
       <p>Cloudflare PoC — D1 + R2 + Astro</p>
     </div>
   </footer>
