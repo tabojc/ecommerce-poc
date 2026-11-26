@@ -34,7 +34,7 @@ class CartDrawer extends HTMLElement {
 
   private render() {
     const items = getCart();
-    this.shadowRoot?.innerHTML = `
+    this.shadowRoot!.innerHTML = `
       <div class="fixed inset-0 z-50 flex items-center justify-center">
         <div class="absolute inset-0 bg-black bg-opacity-50" data-close></div>
         <div class="relative bg-white rounded-lg shadow-xl w-full max-w-md p-6">

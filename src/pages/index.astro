@@ -1,36 +1,61 @@
 ---
 import Layout from '../components/Layout.astro';
 
----
-<div class="container mx-auto px-4 py-12 text-center">
-  <Layout>
-    <div class="max-w-2xl mx-auto">
-      <h1 class="text-5xl font-bold text-brand-600 mb-6">☁️ CloudStore PoC</h1>
-      <p class="text-xl text-gray-600 mb-8">
-        E-commerce completo en Cloudflare Free Tier ($0/mes)
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/shop" class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">
-          Ver Catálogo
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudStore PoC — E-commerce listo para white-label</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+  <nav class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-brand-600">☁️ CloudStore</a>
+      <div class="space-x-6">
+        <a href="/shop" class="text-gray-600 hover:text-brand-600 font-medium">Catálogo</a>
+        <a href="/cart" class="text-gray-600 hover:text-brand-600 font-medium relative">
+          Carrito
+          <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" id="cart-count">0</span>
         </a>
-        <a href="/checkout" class="border-2 border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">
-          Ir al Checkout
-        </a>
-      </div>
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <h3 class="text-lg font-bold mb-2">☁️ Cloudflare D1</h3>
-          <p class="text-sm text-gray-600">Base de datos SQLite para productos y órdenes</p>
-        </div>
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <h3 class="text-lg font-bold mb-2">☁️ Cloudflare R2</h3>
-          <p class="text-sm text-gray-600">Almacenamiento de imágenes de productos</p>
-        </div>
-        <div class="p-4 bg-gray-50 rounded-lg">
-          <h3 class="text-lg font-bold mb-2">🔋 Astro SSR</h3>
-          <p class="text-sm text-gray-600">Rendering híbrido con @astrojs/cloudflare</p>
-        </div>
       </div>
     </div>
-  </Layout>
-</div>
+  </nav>
+  <main>
+    <section class="mb-12 text-center">
+      <h1 class="text-5xl font-bold text-brand-600 mb-4">☁️ CloudStore PoC</h1>
+      <p class="text-xl text-gray-600 mb-6">E-commerce completo en Cloudflare Free Tier ($0/mes) — listo para ser white-labelado.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/shop" class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">Ver Catálogo</a>
+        <a href="/checkout" class="border-2 border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors">Ir al Checkout</a>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-12">
+      <div class="p-4 bg-gray-50 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">☁️ Cloudflare D1</h3>
+        <p class="text-sm text-gray-600">Base de datos SQLite para productos y órdenes</p>
+      </div>
+      <div class="p-4 bg-gray-50 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">☁️ Cloudflare R2</h3>
+        <p class="text-sm text-gray-600">Almacenamiento de imágenes de productos</p>
+      </div>
+      <div class="p-4 bg-gray-50 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">🔋 Astro SSR</h3>
+        <p class="text-sm text-gray-600">Rendering híbrido con @astrojs/cloudflare</p>
+      </div>
+    </section>
+
+    <section class="mb-12 text-center">
+      <h2 class="text-2xl font-bold mb-4">¿Quieres probarlo ahora?</h2>
+      <p class="text-gray-500 mb-6">Crea tu primer pedido desde el carrito o mira las APIs de productos.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/cart" class="bg-brand-600 text-white px-6 py-3 rounded hover:bg-brand-700">Proceder al Pago</a>
+        <a href="/api/products/index" class="bg-gray-100 text-gray-600 px-6 py-3 rounded hover:bg-gray-200">Ver productos</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
